@@ -4,6 +4,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -12,6 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.PrintStream;
 import java.io.RandomAccessFile;
 import java.io.Reader;
 import java.io.Writer;
@@ -611,6 +613,42 @@ public class IODemo {
 	}
 	
 	
+	//打印流,将内容直接打印在文件中,这里还可以格式化打印内容
+	@Test
+	public void demo25() {
+		File file = new File("D:"+File.separator+"one.txt");
+		PrintStream pr = null;
+		try {
+			pr = new PrintStream(new FileOutputStream(file));
+			pr.println(true);
+			pr.println("what a fuck day");
+			pr.printf("姓名--:%s,年龄--:%d", "lee",23);//格式化打印内容
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			pr.close();
+		}
+	}
+	
+	
+	
+	//使用Outputstream直接在控制台窗口输出信息
+	@Test
+	public void demo26() {
+		OutputStream out = System.out;
+		String value = "你好啊";
+		try {
+			out.write(value.getBytes());
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	
 	
