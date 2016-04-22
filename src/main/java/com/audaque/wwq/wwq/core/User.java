@@ -8,7 +8,7 @@ public class User implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -3471393535267840054L;
-	private transient String name;
+	private transient String name;  //使用了transient，不能序列化
 	private int age;
 	private Date birthday;
 	public String getName() {

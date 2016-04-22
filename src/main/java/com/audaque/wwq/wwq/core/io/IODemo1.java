@@ -10,18 +10,21 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PushbackInputStream;
 import java.io.SequenceInputStream;
 import java.util.Scanner;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
 import org.junit.Test;
+
+import com.audaque.wwq.wwq.core.User;
 
 public class IODemo1 {
 	
@@ -364,10 +367,82 @@ public class IODemo1 {
 	
 	
 	
+	@Test
+	public void demo14() {
+		File file = new File("D:"+File.separator+"one.txt");
+		OutputStream out = null;
+		try {
+			out = new FileOutputStream(file);
+			byte [] bytes = "你好".getBytes("ISO8859-1");
+			out.write(bytes);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	
 	
+	@Test
+	public void demo15() {
+		User user = new User();
+		user.setAge(12);
+		user.setName("李白");
+		
+		File file = new File("D:"+File.separator+"one.txt");
+		ObjectOutputStream out = null;
+		try {
+			out = new ObjectOutputStream(new FileOutputStream(file));
+			out.writeObject(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
+	
+	@Test
+	public void demo16() {
+		File file = new File("D:"+File.separator+"one.txt");
+		ObjectInputStream in = null;
+		try {
+			in = new ObjectInputStream(new FileInputStream(file));
+			User user = (User) in.readObject();
+			int age = user.getAge();
+			String name = user.getName();//显示为null，因为User中对Name字段设置了transient
+			
+			System.out.println(age+"  "+ name);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				in.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+	/**
+	 * 当一个类要使用Externalizable这个接口的时候，
+	 * 这个类中必须要有一个无参的构造函数，如果没有的话，
+	 * 在构造的时候会产生异常，这是因为在反序列话的时候会默认调用无参的构造函数。
+	 */
+	@Test
+	public void demo17() {
+		
+	}
 	
 	
 	
