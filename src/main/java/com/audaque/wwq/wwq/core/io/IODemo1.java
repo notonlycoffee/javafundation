@@ -3,6 +3,7 @@ package com.audaque.wwq.wwq.core.io;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.Externalizable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -16,6 +17,8 @@ import java.io.OutputStream;
 import java.io.PrintStream;
 import java.io.PushbackInputStream;
 import java.io.SequenceInputStream;
+import java.io.Serializable;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
@@ -387,6 +390,10 @@ public class IODemo1 {
 	}
 	
 	
+	/**************序列化和反序列化********* Serializable 和 Externalizable***********************************************************************************************/
+	/**
+	 * 被transient关键字修饰的变量不再能被序列化，一个静态变量不管是否被transient修饰，均不能被序列化。
+	 */
 	
 	@Test
 	public void demo15() {
@@ -435,12 +442,50 @@ public class IODemo1 {
 	
 	
 	/**
+	 * demo17序列化对象，讲对象写入到文件中，demo18反序列化，讲文件中的对象读取到内存中，这两个demo需要一起运行
 	 * 当一个类要使用Externalizable这个接口的时候，
 	 * 这个类中必须要有一个无参的构造函数，如果没有的话，
 	 * 在构造的时候会产生异常，这是因为在反序列话的时候会默认调用无参的构造函数。
 	 */
 	@Test
 	public void demo17() {
+		User user = new User();
+		user.setAge(34);
+		user.setName("李白");
+		user.setBirthday(new Date());
+		File file = new File("D:"+File.separator+"one.txt");
+		ObjectOutputStream out = null;
+		try {
+			out = new ObjectOutputStream(new FileOutputStream(file));
+			out.writeObject(user);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				out.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+	}
+	
+	//将对象从文件中读取到内存中，使用的是Externalizable这个接口，transient关键字对字段无效
+	@Test
+	public void demo18() {
+		File file = new File("D:"+File.separator+"one.txt");
+		ObjectInputStream in = null;
+		
+		try {
+			in = new ObjectInputStream(new FileInputStream(file));
+			User user = (User) in.readObject();
+			int age = user.getAge();
+			String name = user.getName();  //User类中虽然对name使用了transient，但是这里可以序
+										   //列化出来，所以使用Serializable这个借口才会因为transent而不能序列化
+			System.out.println();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 	
