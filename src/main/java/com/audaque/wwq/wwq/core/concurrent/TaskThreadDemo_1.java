@@ -4,6 +4,7 @@ package com.audaque.wwq.wwq.core.concurrent;
 /**
  * 使用runnable和Thread运行线程，必须要在main方法中运行，
  * 不能再junti的@Test里面运行，不然会提前终止@Test测试而没有运行完全runnable定义的任务
+ * sleep()和join()方法都会抛出InterruptedException异常
  * @author jc
  *
  */

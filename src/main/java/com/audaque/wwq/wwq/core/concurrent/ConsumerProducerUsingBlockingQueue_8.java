@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 /**
  * 
  *Title:使用阻塞队列实现线程的安全操作
- *Description: 阻塞队列包括：ArrayBlockingQueue,LinkedBlockingQueue,PriorityBlockQueue三个类
+ *Description: 阻塞队列包括：ArrayBlockingQueue,LinkedBlockingQueue,PriorityBlockingQueue三个类
  * @author jc
  * 2016年4月29日下午10:43:15
  */
