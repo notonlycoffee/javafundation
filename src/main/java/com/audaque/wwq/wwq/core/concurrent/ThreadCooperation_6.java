@@ -6,6 +6,8 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
+
+
 /**
  * 线程之间的协作通信,使用Condition条件,await()让线程等待,signalAll()唤醒所有的等待线程
  * @author q

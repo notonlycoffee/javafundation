@@ -1,8 +1,8 @@
 package com.audaque.wwq.wwq.core.concurrent_book.chapter1.one;
 
-public class Calculator implements Runnable {
+public class Calculator_1 implements Runnable {
 	private int number;
-	public Calculator(int number) {
+	public Calculator_1(int number) {
 		this.number = number;
 	}
 	
