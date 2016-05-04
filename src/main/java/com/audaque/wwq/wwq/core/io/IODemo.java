@@ -4,7 +4,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -651,6 +650,60 @@ public class IODemo {
 	}
 	
 	
+	
+	/**
+	 * 1.详情请查看这个博客内容:http://blog.csdn.net/jackiehff/article/details/17765909
+	 * 2.try-with-resources语句是一个声明一个或多个资源的 try 语句
+	 * 3.任何实现了 Java.lang.AutoCloseable的对象都可以用作一个资源。
+	 * 4.一个 try-with-resources 语句可以像普通的 try 语句那样有 catch 和 finally 块。
+	 * 		在try-with-resources 语句中, 任意的 catch 或者 finally 块都是在声明的资源被关闭以后才运行。
+	 * 
+	
+		 static String readFirstLineFromFile(String path) throws IOException {
+	      try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+	        return br.readLine();
+	      }
+	    }
+    
+    
+	 static String readFirstLineFromFileWithFinallyBlock(String path) throws IOException {
+      BufferedReader br = new BufferedReader(new FileReader(path));
+      try {
+        return br.readLine();
+      } finally {
+        if (br != null) br.close();
+      }
+    }
+       然而，在这个例子中，如果 readLine 和 close 方法均抛出异常，那么 readFirstLineFromFileWithFinallyBlock 方法将抛出从 
+       finally 块中抛出的异常;  try 块中抛出的异常被抑制了。与此相反, 在 readFirstLineFromFile 这个例子中, 如果 try 块和 
+       try-with-resources 语句均抛出异常, 那么 readFirstLineFromFile 将抛出从 try 块中抛出的异常;  try-with-resources 块
+       抛出的异常被抑制了。
+	 * 
+	 */
+	@Test
+	public void demo27() {
+		String value = "你好啊";
+		try (OutputStream out = System.out;) {
+			out.write(value.getBytes());
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
+	}
+	
+	/**
+	 * 跟上面demo27的例子一样
+	 */
+	@Test
+	public void demo28() {
+		File file = new File("D:"+File.separator + "one.txt");
+		try (Writer out = new OutputStreamWriter(new FileOutputStream(file))) {
+			out.write("你知道");
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 	
 	
 	
