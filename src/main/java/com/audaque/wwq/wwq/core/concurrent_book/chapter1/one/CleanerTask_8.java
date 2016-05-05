@@ -1,5 +1,9 @@
 package com.audaque.wwq.wwq.core.concurrent_book.chapter1.one;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.util.Date;
 import java.util.Deque;
 
@@ -8,7 +12,7 @@ public class CleanerTask_8 extends Thread {
 	private Deque<Event_8> deque;
 	public CleanerTask_8(Deque<Event_8> deque) {
 		this.deque = deque;
-		setDaemon(true);
+		setDaemon(true);//只能在start() 方法之前可以调用 setDaemon() 方法。一旦线程运行了，就不能修改守护状态。
 	}
 
 	@Override
