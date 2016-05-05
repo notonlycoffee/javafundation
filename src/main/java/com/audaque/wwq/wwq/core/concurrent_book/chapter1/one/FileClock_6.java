@@ -3,6 +3,15 @@ package com.audaque.wwq.wwq.core.concurrent_book.chapter1.one;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * 
+ *Title:
+ *Description:
+ *	1.Java 并发 API 有另一种方法能让线程对象离开 CPU。它是 yield() 方法, 
+ *		它向JVM表示线程对象可以让CPU执行其他任务。JVM 不保证它会遵守请求。通常，它只是用来试调的。
+ *@author q
+ *2016年5月5日上午9:44:26
+ */
 public class FileClock_6 implements Runnable {
 
 	public void run() {
