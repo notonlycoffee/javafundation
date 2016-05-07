@@ -1,10 +1,10 @@
-package com.audaque.wwq.wwq.core.another_concurrentbook;
+package com.audaque.wwq.wwq.core.another_concurrentbook.chapter1;
 
 /**
  * 
  *Title:
  *Description: 
- *	1.这种方式吧线程执行的逻辑代码直接写在了Thread的子类中，这样根据线程的概念模型，虚拟cpu和代码
+ *	1.这种方式把线程执行的逻辑代码直接写在了Thread的子类中，这样根据线程的概念模型，虚拟cpu和代码
  *		混合在一起。并且java是单继承机制，线程体继承Thread类后，就不能再继承其他类了，线程的扩展受影响
  * @author jc
  * 2016年5月7日上午10:04:01

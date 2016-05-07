@@ -1,4 +1,4 @@
-package com.audaque.wwq.wwq.core.another_concurrentbook;
+package com.audaque.wwq.wwq.core.another_concurrentbook.chapter1;
 
 import java.util.concurrent.TimeUnit;
 
