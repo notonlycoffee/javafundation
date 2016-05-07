@@ -10,7 +10,7 @@ package com.audaque.wwq.wwq.core.another_concurrentbook;
  * @author jc
  * 2016年5月7日上午10:57:49
  */
-public class SleepTest {
+public class SleepTest_4 {
 	public static void main(String[] arg) {
 		
 		String [] args = {"one","two","three","four"};

@@ -10,15 +10,15 @@ import java.util.concurrent.TimeUnit;
  * @author jc
  * 2016年5月7日上午11:24:26
  */
-public class JoinTest extends Thread {
+public class JoinTest_5 extends Thread {
 	static int result = 0;
-	public JoinTest(String name) {
+	public JoinTest_5(String name) {
 		super(name);
 	}
 	
 	public static void main(String[] args) {
 		System.out.println("主线程开始执行");
-		Thread t = new JoinTest("计算线程");
+		Thread t = new JoinTest_5("计算线程");
 		t.start();
 		System.out.println("result:"+result);
 		try {
