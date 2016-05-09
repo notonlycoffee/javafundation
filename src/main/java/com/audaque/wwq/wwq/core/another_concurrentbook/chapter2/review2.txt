@@ -1,0 +1,1 @@
+在JAVA环境下 ReentrantLock 和synchronized 都是 可重入锁
