@@ -5,13 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
-public class VolatileTest {
+public class VolatileTest_1 {
 	
 //	private volatile static int balance=10;
 	
 	private static int balance=10;
 	
-	public VolatileTest() {
+	public VolatileTest_1() {
 		
 	}
 	

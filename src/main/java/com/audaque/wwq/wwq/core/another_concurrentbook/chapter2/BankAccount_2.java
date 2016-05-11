@@ -1,12 +1,21 @@
 package com.audaque.wwq.wwq.core.another_concurrentbook.chapter2;
 
-public class BankAccount {
+
+/**
+ * 
+ *Title:
+ *Description:
+ *	1.在多线程中,一个线程存钱,一个线程取钱,会出现线程不安全的问题,最好使用同步语句进行同步操作
+ *@author q
+ *2016年5月11日下午2:55:08
+ */
+public class BankAccount_2 {
 	private int number;
 	private int balance;
 	
-	public BankAccount() {}
+	public BankAccount_2() {}
 	
-	public BankAccount(int number,int balance) {
+	public BankAccount_2(int number,int balance) {
 		this.number = number;
 		this.balance = balance;
 	}
@@ -24,7 +33,7 @@ public class BankAccount {
 	}
 	
 	public static void main(String[] args) {
-		BankAccount b = new BankAccount(1, 1000);
+		BankAccount_2 b = new BankAccount_2(1, 1000);
 		Thread t1 = new Thread(new Depositor(b,100),"depositor");
 		Thread t2 = new Thread(new Withdrawer(b, 100),"withdrawer");
 		t1.start();
@@ -39,9 +48,9 @@ public class BankAccount {
 	}
 	
 	static class Depositor implements Runnable {
-		BankAccount bankAccount;
+		BankAccount_2 bankAccount;
 		int amount;
-		public Depositor(BankAccount bankAccount,int amount) {
+		public Depositor(BankAccount_2 bankAccount,int amount) {
 			this.bankAccount = bankAccount;
 			this.amount = amount;
 		}
@@ -54,9 +63,9 @@ public class BankAccount {
 	}
 	
 	static class Withdrawer implements Runnable {
-		BankAccount bankAccount;
+		BankAccount_2 bankAccount;
 		int amount;
-		public Withdrawer(BankAccount bankAccount,int amount) {
+		public Withdrawer(BankAccount_2 bankAccount,int amount) {
 			this.bankAccount = bankAccount;
 			this.amount = amount;
 		}
