@@ -3,12 +3,12 @@ package com.audaque.wwq.wwq.core.another_concurrentbook.chapter3;
 import java.util.concurrent.TimeUnit;
 
 public class Main_1 implements Runnable {
-	private SynchronizedCounter s;
-	public Main_1(SynchronizedCounter s) {
+	private SynchronizedCounter_1 s;
+	public Main_1(SynchronizedCounter_1 s) {
 		this.s = s;
 	}
 	public static void main(String[] args) {
-		SynchronizedCounter ss = new SynchronizedCounter();
+		SynchronizedCounter_1 ss = new SynchronizedCounter_1();
 		Thread t1 = new Thread(new Main_1(ss));
 		Thread t2 = new Thread(new Main_1(ss));
 		Thread t3 = new Thread(new Main_1(ss));
