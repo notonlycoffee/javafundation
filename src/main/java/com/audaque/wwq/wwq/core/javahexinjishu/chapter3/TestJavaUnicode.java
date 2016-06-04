@@ -1,4 +1,4 @@
-package com.audaque.wwq.wwq.core.javahexinjishu;
+package com.audaque.wwq.wwq.core.javahexinjishu.chapter3;
 
 public class TestJavaUnicode {
 
