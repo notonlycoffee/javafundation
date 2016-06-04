@@ -29,7 +29,6 @@ public class IsLetter {
 			char at = (char)(a+i);
 			Character c = new Character(at);
 			if(Character.isJavaIdentifierStart(c)) {//判断字符是否可以作为java变量的首个字符
-//				System.out.print("  (can start is " + c+")   ");
 				System.out.print(c+"  ");
 				if(i % 15 == 0) {
 					System.out.println();
