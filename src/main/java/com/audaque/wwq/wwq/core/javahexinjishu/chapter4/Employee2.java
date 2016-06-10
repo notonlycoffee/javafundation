@@ -1,5 +1,7 @@
 package com.audaque.wwq.wwq.core.javahexinjishu.chapter4;
 
+
+
 public class Employee2 {
 	   private static int nextId = 1;
 
